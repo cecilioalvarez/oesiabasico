@@ -3,17 +3,21 @@ package com.arquitecturajava.cecilio;
 public class Principal8 {
 
 	public static void main(String[] args) {
-	
-	int[] lista= new int[] { 6,7,8,2,3,4};
-		
-		
+
+		int[] lista = new int[] { 6, 7, 8, 2, 3, 4 };
+
 		for (int i = 0; i < lista.length; i++) {
 			System.out.println(lista[i]);
 
 		}
 
-	
+		int total = 0;
+		for (int i = 0; i < lista.length; i++) {
+			total=total+lista[i];
+			
+		}
 
+		System.out.println("la suma es "+total);
 	}
 
 }
