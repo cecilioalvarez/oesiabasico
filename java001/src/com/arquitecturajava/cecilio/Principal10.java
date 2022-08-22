@@ -3,7 +3,15 @@ package com.arquitecturajava.cecilio;
 public class Principal10 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		int nota=9 ;
+		
+		
+		if (nota <=1 || nota>=9) {
+			
+			System.out.println("te has salido de la tabla");
+		}
+		
 
 	}
 
