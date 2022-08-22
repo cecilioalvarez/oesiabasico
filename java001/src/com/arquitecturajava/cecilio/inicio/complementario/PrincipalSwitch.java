@@ -1,4 +1,4 @@
-package com.arquitecturajava.cecilio;
+package com.arquitecturajava.cecilio.inicio.complementario;
 
 public class PrincipalSwitch {
 

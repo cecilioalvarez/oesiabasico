@@ -1,4 +1,4 @@
-package com.arquitecturajava.cecilio;
+package com.arquitecturajava.cecilio.ibucles;
 
 public class Principal7Multiplilcar2 {
 
