@@ -1,4 +1,4 @@
-package com.arquitecturajava;
+package com.arquitecturajava.cecilio;
 
 public class Principal2 {
 
