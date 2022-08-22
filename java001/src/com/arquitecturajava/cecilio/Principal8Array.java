@@ -11,7 +11,7 @@ public class Principal8Array {
 			System.out.println(lista[i]);
 		}
 
-		System.out.println("Hola Felix2");
+		System.out.println("Hola Felix");
 	}
 
 }
