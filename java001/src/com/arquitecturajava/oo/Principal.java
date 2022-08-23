@@ -11,6 +11,7 @@ public class Principal {
 		System.out.println(r.getLado1());
 		System.out.println(r.getLado2());
 		System.out.println(r.area());
+		System.out.println(r.perimetro());
 	}
 
 }
