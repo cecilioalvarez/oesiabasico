@@ -4,6 +4,7 @@ public class Cargador {
 
 	private String marca;
 	private String tipo;
+	private double precio;
 	
 	public String getMarca() {
 		return marca;
@@ -17,10 +18,17 @@ public class Cargador {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	public Cargador(String marca, String tipo) {
+	public Cargador(String marca, String tipo, double precio) {
 		super();
 		this.marca = marca;
 		this.tipo = tipo;
+		this.precio=precio;
+	}
+	public double getPrecio() {
+		return precio;
+	}
+	public void setPrecio(double precio) {
+		this.precio = precio;
 	}
 	
 	
