@@ -7,10 +7,10 @@ public class PrincipalJugador {
 	public static void main(String[] args) {
 		
 		
-		Jugador j= new Jugador( "pedro",2);
-		Jugador j2= new Jugador( "pedro2",15);
-		Jugador j3= new Jugador( "pedro3",20);
-		Jugador j4= new Jugador( "pedro4",7);
+		Jugador j= new Jugador( "pedro",2,30);
+		Jugador j2= new Jugador( "pedro2",15,30);
+		Jugador j3= new Jugador( "pedro3",20,21);
+		Jugador j4= new Jugador( "pedro4",7,19);
 		Equipo e= new Equipo("miequpo");
 		
 		e.addJugador(j);
@@ -19,7 +19,7 @@ public class PrincipalJugador {
 		e.addJugador(j4);
 		
 		System.out.println(e.jugadorNumeroMasAlto().getNombre());
-		
+		System.out.println(e.getEdadMedia());
 	}
 
 }

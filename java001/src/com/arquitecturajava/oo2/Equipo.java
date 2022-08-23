@@ -34,6 +34,18 @@ public class Equipo {
 		return jugadorSeleccionado;
 	}
 	
+public double getEdadMedia() {
+		
+		double suma=0;
+		
+		for (Jugador j : jugadores) {
+			
+			suma+=j.getEdad();
+			
+		}
+		return suma/jugadores.size();
+	}
+	
 	
 	public String getNombre() {
 		return nombre;

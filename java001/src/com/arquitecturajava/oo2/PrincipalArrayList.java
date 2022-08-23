@@ -30,5 +30,7 @@ public class PrincipalArrayList {
 
 			System.out.println(cadena);
 		}
+		
+		
 	}
 }
