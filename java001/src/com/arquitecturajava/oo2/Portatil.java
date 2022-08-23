@@ -45,5 +45,11 @@ public class Portatil {
 		this.precio= precio;
 	}
 	
+	public double getPrecioFinal() {
 	
+		if (cargador!=null)
+		
+		return getPrecio()+ cargador.getPrecio();
+		else return getPrecio();
+	}
 }
