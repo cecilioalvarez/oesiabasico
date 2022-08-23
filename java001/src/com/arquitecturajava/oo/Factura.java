@@ -31,8 +31,23 @@ public class Factura {
 	}
 	
 	
+	public Factura() {
+		super();
+	}
+	
+	
+	public Factura(int numero, String concepto) {
+		super();
+		this.numero = numero;
+		this.concepto = concepto;
+		this.importe=100;
+	}
 	public double getImporteConIVA() {
 		
 		return this.getImporte()*1.21;
+	}
+	public double getImporteConIVA(int porcentaje) {
+		
+		return this.getImporte()+ this.getImporte()*porcentaje/100;
 	}
 }
