@@ -32,6 +32,10 @@ public class Rectangulo {
 	}
 
 
+	public Rectangulo(int lado1, int lado2) {
+		setLado1(lado1);
+		setLado2(lado2);
+	}
 
 	double area() {
 		
