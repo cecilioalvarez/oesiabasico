@@ -4,9 +4,7 @@ public class Rectangulo {
 
 	private int lado1;
 	private int lado2;
-	
-	
-	
+
 	public int getLado1() {
 		return lado1;
 	}
