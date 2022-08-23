@@ -4,6 +4,8 @@ public class Portatil {
 
 	private String marca;
 
+	private double precio;
+	
 	private Cargador cargador;
 	
 	public Cargador getCargador() {
@@ -22,15 +24,25 @@ public class Portatil {
 		this.marca = marca;
 	}
 
-	public Portatil(String marca, Cargador cargador) {
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+
+	public Portatil(String marca,double precio, Cargador cargador) {
 		super();
 		this.marca = marca;
+		this.precio= precio;
 		this.cargador = cargador;
 	}
 
-	public Portatil(String marca) {
+	public Portatil(String marca,double precio) {
 		super();
 		this.marca = marca;
+		this.precio= precio;
 	}
 	
 	
