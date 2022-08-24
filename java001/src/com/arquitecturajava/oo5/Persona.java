@@ -27,10 +27,12 @@ public class Persona {
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(dni);
+		System.out.println("llama al hashcode");
+		return Objects.hash(dni, nombre);
 	}
 	@Override
 	public boolean equals(Object obj) {
+		System.out.println("llama al equals");
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -38,8 +40,9 @@ public class Persona {
 		if (getClass() != obj.getClass())
 			return false;
 		Persona other = (Persona) obj;
-		return Objects.equals(dni, other.dni);
+		return Objects.equals(dni, other.dni) && Objects.equals(nombre, other.nombre);
 	}
+	
 
 
 }
