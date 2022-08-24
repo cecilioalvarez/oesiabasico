@@ -24,6 +24,8 @@ public class Lampara implements Conectable {
 	public void off() {
 		bombilla.off();
 	}
+
+	
 	
 	
 }
