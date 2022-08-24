@@ -5,6 +5,13 @@ public abstract class Vehiculo {
 	private String marca;
 	private String modelo;
 
+	
+	public Vehiculo(String marca, String modelo) {
+		super();
+		this.marca = marca;
+		this.modelo = modelo;
+	}
+
 	public String getMarca() {
 		return marca;
 	}
@@ -20,5 +27,7 @@ public abstract class Vehiculo {
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
 	}
+	
+	public abstract void acelerar() ;
 
 }
