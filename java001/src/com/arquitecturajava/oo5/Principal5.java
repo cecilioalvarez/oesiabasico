@@ -10,6 +10,7 @@ public class Principal5 {
 		LamparaTecho lt= new LamparaTecho();
 		lt.addBombilla(b);
 		lt.addBombilla(b2);
+		lt.addTelefono(new Telefono());
 		lt.on();
 	}
 }

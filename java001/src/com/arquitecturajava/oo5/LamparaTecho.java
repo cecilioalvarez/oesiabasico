@@ -6,17 +6,21 @@ import java.util.List;
 public class LamparaTecho  implements Conectable{
 
 	
-	List<Bombilla> bombillas= new ArrayList<Bombilla>();
+	List<Conectable> conectables= new ArrayList<Conectable>();
 
 	public void addBombilla(Bombilla b) {
 		
-		bombillas.add(b);
+		conectables.add(b);
+	}
+	public void addTelefono(Telefono telefono) {
+		
+		conectables.add(telefono);
 	}
 	
 	@Override
 	public void on() {
 	
-		for (Conectable c: bombillas) {
+		for (Conectable c: conectables) {
 			c.on();
 		}
 		
@@ -24,7 +28,7 @@ public class LamparaTecho  implements Conectable{
 
 	@Override
 	public void off() {
-		for (Conectable c: bombillas) {
+		for (Conectable c: conectables) {
 			c.on();
 		}
 		
