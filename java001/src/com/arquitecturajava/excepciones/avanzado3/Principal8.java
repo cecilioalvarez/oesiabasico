@@ -35,9 +35,11 @@ public class Principal8 {
 				GestorFichero gf = new GestorFichero();
 				try {
 					gf.crearFichero("nuevo.txt", "hola soy un fichero");
+					l1.setText("el fichero se creo y se relleno");
 				} catch (SQLException | IOException e1) {
 					l1.setText(e1.getMessage());
 				}
+				
 				
 			}
 		});
