@@ -1,4 +1,4 @@
-package com.arquitecturajava.excepciones.avanzado4;
+package com.arquitecturajava.excepciones.avanzado5;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -34,8 +34,8 @@ public class Principal8 {
 
 				GestorFichero gf = new GestorFichero();
 				try {
-					gf.crearFichero("nuevo.txt", "hola soy un fichero");
-					l1.setText("el fichero se creo y se relleno");
+					String texto=gf.leerFichero("nuevo.txt");
+					l1.setText(texto);
 				} catch (GestorFicheroException e1) {
 					l1.setText(e1.getMessage());
 					e1.printStackTrace();
