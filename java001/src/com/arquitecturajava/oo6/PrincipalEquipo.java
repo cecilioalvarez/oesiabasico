@@ -14,7 +14,7 @@ public class PrincipalEquipo {
 		equipo.addSoldado(new SoldadoEjercitoTierraEspia());
 		equipo.addSoldado(new SoldadoEjercitoTierraEspia());
 		System.out.println(equipo.estaPreparado());
-		
+		equipo.disparar();
 
 	}
 
