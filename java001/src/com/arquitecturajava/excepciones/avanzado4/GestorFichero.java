@@ -1,4 +1,4 @@
-package com.arquitecturajava.excepciones.avanzado3;
+package com.arquitecturajava.excepciones.avanzado4;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class GestorFichero {
 
-	public void crearFichero(String fichero, String texto) throws SQLException,IOException {
+	public void crearFichero(String fichero, String texto) throws GestorFicheroException {
 		
 		try (FileWriter fw = new FileWriter(fichero);
 				Connection con = DriverManager.getConnection("dafasdf", "dfafdsf", "dafeda");) {
@@ -20,7 +20,7 @@ public class GestorFichero {
 				e1.printStackTrace();
 				//JOptionPane.showMessageDialog(null, e1.getMessage());
 				// realizar una operacion de log del error
-				throw e1;
+				throw new GestorFicheroException("Error configurando fichero de arranque", e1);
 				
 			}
 	}
