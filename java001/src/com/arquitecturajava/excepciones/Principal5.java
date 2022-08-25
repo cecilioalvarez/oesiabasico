@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class Principal4 {
+public class Principal5 {
 
 	public static void main(String[] args) {
 
@@ -32,17 +32,13 @@ public class Principal4 {
 					fw.write("hola soy un fichero de texto");
 					DriverManager.getConnection("dafasdf","dfafdsf","dafeda");
 					JOptionPane.showMessageDialog(null, "Has creado el fichero");
-				} catch (IOException e1) {
+				} catch (IOException | SQLException e1) {
 					
-					JOptionPane.showMessageDialog(null,e1.getMessage());
-					
-				} catch (SQLException e1) {
 					JOptionPane.showMessageDialog(null,e1.getMessage());
 					
 				}finally {
 					
 					if (fw!=null) {
-						
 						try {
 							fw.close();
 						} catch (IOException e1) {
