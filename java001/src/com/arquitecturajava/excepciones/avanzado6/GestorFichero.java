@@ -1,4 +1,4 @@
-package com.arquitecturajava.excepciones.avanzado5;
+package com.arquitecturajava.excepciones.avanzado6;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
