@@ -14,6 +14,7 @@ public class SoldadoEjercitoTierraEspia implements SoldadoSeal {
 		System.out.println("el espia de tierra se mueve");
 		
 	}
+	
 
 	@Override
 	public void disparar() {
@@ -26,6 +27,18 @@ public class SoldadoEjercitoTierraEspia implements SoldadoSeal {
 	public void bucear() {
 		System.out.println("el espia  de tiera bucea");
 		
+	}
+
+	@Override
+	public boolean isBuzo() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isConductor() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 
 }

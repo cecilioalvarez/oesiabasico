@@ -1,6 +1,6 @@
 package com.arquitecturajava.oo6;
 
-public class SoladoEjercitoTierra implements Soldado {
+public class SoldadoEjercitoTierra implements Soldado {
 
 	@Override
 	public void mover() {
@@ -12,6 +12,18 @@ public class SoladoEjercitoTierra implements Soldado {
 	public void disparar() {
 		System.out.println("el solado de tierra dispara");
 		
+	}
+
+	@Override
+	public boolean isBuzo() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isConductor() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

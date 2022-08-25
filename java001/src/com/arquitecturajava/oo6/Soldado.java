@@ -4,4 +4,6 @@ public interface Soldado {
 
 	void mover();
 	void disparar();
+	boolean isBuzo();
+	boolean isConductor();
 }
