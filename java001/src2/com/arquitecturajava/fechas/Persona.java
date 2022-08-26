@@ -39,7 +39,13 @@ public class Persona {
 		
 		Calendar calendario=Calendar.getInstance();
 		calendario.setTime(getFechaNacimiento());
-		return !calendario.after(otra.getFechaNacimiento());
+		
+		Calendar calendario2=Calendar.getInstance();
+		calendario2.setTime(otra.getFechaNacimiento());
+		
+		
+		System.out.println(!calendario.after(calendario2));
+		return !calendario.after(calendario2);
 		
 		
 	}

@@ -48,7 +48,7 @@ public class PrincipalFichero {
 		Persona mayor = listaPersonas.get(0);
 
 		for (Persona p : listaPersonas) {
-
+			
 			if (p.esMayor(mayor)) {
 				mayor=p;
 			}
