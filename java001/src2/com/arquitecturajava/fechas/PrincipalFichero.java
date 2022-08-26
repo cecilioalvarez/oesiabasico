@@ -1,4 +1,4 @@
-package com.arquitecturajava;
+package com.arquitecturajava.fechas;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

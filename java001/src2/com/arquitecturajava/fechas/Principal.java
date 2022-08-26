@@ -1,4 +1,4 @@
-package com.arquitecturajava;
+package com.arquitecturajava.fechas;
 
 
 import java.text.ParseException;
