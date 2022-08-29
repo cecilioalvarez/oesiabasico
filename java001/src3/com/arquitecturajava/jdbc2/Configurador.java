@@ -38,8 +38,7 @@ public class Configurador {
 			user= propiedades.getProperty("user");
 			password= propiedades.getProperty("password");
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			 throw new RuntimeException("error configurador",e1);
 		}
 		
 	}

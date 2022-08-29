@@ -15,7 +15,7 @@ import java.util.Properties;
 
 public class PersonaAR {
 
-	static final String INSER = "SELECT * FROM Personas";
+	static final String SELECCIONAR = "SELECT * FROM Personas";
 	static final String INSERCION = "Insert into Personas values(?,?,?,?,?)";
 	static final String BORRAR = "DELETE from Personas where dni=?";
 
@@ -87,13 +87,11 @@ public class PersonaAR {
 
 	public static List<PersonaAR> buscarTodos() {
 
-		Configurador c= Configurador.getInstance();
 		List<PersonaAR> listaPersonas = new ArrayList<PersonaAR>();
 
-		try (Connection conn = DriverManager.getConnection(c.getUrl(),c.getUser(),c.getPassword());
-				PreparedStatement sentencia = conn.prepareStatement(INSER);
-
-		) {
+		try (PreparedStatement sentencia= DataBaseHelper.crearSentenciaPreparada(SELECCIONAR,null);
+				Connection conn= sentencia.getConnection();
+			) {
 
 			try (ResultSet rs = sentencia.executeQuery();) {
 
@@ -105,10 +103,10 @@ public class PersonaAR {
 					persona.setEdad(rs.getInt("edad"));
 					persona.setPais(rs.getString("pais"));
 					listaPersonas.add(persona);
-
 				}
 			} catch (SQLException e) {
-
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 
 		} catch (SQLException e) {
@@ -121,19 +119,11 @@ public class PersonaAR {
 	}
 
 	public void insertar() {
-
-		Configurador c= Configurador.getInstance();
 		
-		try (Connection conn = DriverManager.getConnection(c.getUrl(),c.getUser(),c.getPassword());
-				PreparedStatement sentencia = conn.prepareStatement(INSERCION);
-
-		) {
-
-			sentencia.setString(1, getDni());
-			sentencia.setString(2, getNombre());
-			sentencia.setString(3, getApellidos());
-			sentencia.setInt(4, getEdad());
-			sentencia.setString(5, getPais());
+		try (PreparedStatement sentencia= DataBaseHelper.crearSentenciaPreparada(INSERCION, getDni(),getNombre(),getApellidos(),getEdad(),getPais());
+				Connection conn= sentencia.getConnection();
+			)
+		 {
 			sentencia.executeUpdate();
 
 		} catch (SQLException e) {
@@ -144,19 +134,12 @@ public class PersonaAR {
 	}
 	
 	public void borrar() {
-
 		
-		Configurador c= Configurador.getInstance();
-		try (Connection conn = DriverManager.getConnection(c.getUrl(),c.getUser(),c.getPassword());
-				PreparedStatement sentencia = conn.prepareStatement(BORRAR);
-
+		try (PreparedStatement sentencia= DataBaseHelper.crearSentenciaPreparada(BORRAR, getDni());
+			Connection conn= sentencia.getConnection();
 		) {
-
-			sentencia.setString(1, getDni());
 			sentencia.executeUpdate();
-
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
