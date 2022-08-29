@@ -1,5 +1,9 @@
 package com.arquitecturajava.jdbc;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,14 +11,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class PersonaAR {
 
-	static final String URL = "jdbc:mysql://localhost/curso";
-	static final String USUARIO = "root";
-	static final String CLAVE = "";
+	
 	static final String INSER = "SELECT * FROM Personas";
 	static final String INSERCION = "Insert into Personas values(?,?,?,?,?)";
+	static final String BORRAR = "DELETE from Personas where dni=?";
 
 	private String dni;
 	private String nombre;
@@ -75,11 +79,25 @@ public class PersonaAR {
 		super();
 	}
 
+	
+	
+	public PersonaAR(String dni) {
+		super();
+		this.dni = dni;
+	}
+
 	public static List<PersonaAR> buscarTodos() {
 
+		Properties propiedades= new Properties();
+		try {
+			propiedades.load(new FileInputStream(new File("db.properties")));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		List<PersonaAR> listaPersonas = new ArrayList<PersonaAR>();
 
-		try (Connection conn = DriverManager.getConnection(URL, USUARIO, CLAVE);
+		try (Connection conn = DriverManager.getConnection(propiedades.getProperty("URL"), propiedades.getProperty("user"), propiedades.getProperty("passord"));
 				PreparedStatement sentencia = conn.prepareStatement(INSER);
 
 		) {
@@ -111,7 +129,15 @@ public class PersonaAR {
 
 	public void insertar() {
 
-		try (Connection conn = DriverManager.getConnection(URL, USUARIO, CLAVE);
+		Properties propiedades= new Properties();
+		try {
+			propiedades.load(new FileInputStream(new File("db.properties")));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		try (Connection conn = DriverManager.getConnection(propiedades.getProperty("url"), propiedades.getProperty("usuario"), propiedades.getProperty("clave"));
 				PreparedStatement sentencia = conn.prepareStatement(INSERCION);
 
 		) {
@@ -121,6 +147,33 @@ public class PersonaAR {
 			sentencia.setString(3, getApellidos());
 			sentencia.setInt(4, getEdad());
 			sentencia.setString(5, getPais());
+			sentencia.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void borrar() {
+
+		Properties propiedades= new Properties();
+		
+		try {
+			propiedades.load(new FileInputStream(new File("db.properties")));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+		try (Connection conn = DriverManager.getConnection(propiedades.getProperty("url"), propiedades.getProperty("usuario"), propiedades.getProperty("clave");;
+				PreparedStatement sentencia = conn.prepareStatement(BORRAR);
+
+		) {
+
+			sentencia.setString(1, getDni());
 			sentencia.executeUpdate();
 
 		} catch (SQLException e) {
