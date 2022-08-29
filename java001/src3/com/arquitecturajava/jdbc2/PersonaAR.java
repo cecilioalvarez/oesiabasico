@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import javax.management.RuntimeErrorException;
+
 public class PersonaAR {
 
 	static final String SELECCIONAR = "SELECT * FROM Personas";
@@ -78,8 +80,6 @@ public class PersonaAR {
 		super();
 	}
 
-	
-	
 	public PersonaAR(String dni) {
 		super();
 		this.dni = dni;
@@ -89,9 +89,8 @@ public class PersonaAR {
 
 		List<PersonaAR> listaPersonas = new ArrayList<PersonaAR>();
 
-		try (PreparedStatement sentencia= DataBaseHelper.crearSentenciaPreparada(SELECCIONAR,null);
-				Connection conn= sentencia.getConnection();
-			) {
+		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(SELECCIONAR, null);
+				Connection conn = sentencia.getConnection();) {
 
 			try (ResultSet rs = sentencia.executeQuery();) {
 
@@ -105,13 +104,11 @@ public class PersonaAR {
 					listaPersonas.add(persona);
 				}
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				throw new RuntimeException("error de datos", e);
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new RuntimeException("error de datos", e);
 		}
 
 		return listaPersonas;
@@ -119,28 +116,23 @@ public class PersonaAR {
 	}
 
 	public void insertar() {
-		
-		try (PreparedStatement sentencia= DataBaseHelper.crearSentenciaPreparada(INSERCION, getDni(),getNombre(),getApellidos(),getEdad(),getPais());
-				Connection conn= sentencia.getConnection();
-			)
-		 {
-			sentencia.executeUpdate();
 
+		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(INSERCION, getDni(), getNombre(),
+				getApellidos(), getEdad(), getPais()); Connection conn = sentencia.getConnection();) {
+			sentencia.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new RuntimeException("error de datos", e);
 		}
 
 	}
-	
+
 	public void borrar() {
-		
-		try (PreparedStatement sentencia= DataBaseHelper.crearSentenciaPreparada(BORRAR, getDni());
-			Connection conn= sentencia.getConnection();
-		) {
+
+		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(BORRAR, getDni());
+				Connection conn = sentencia.getConnection();) {
 			sentencia.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new RuntimeException("error de datos", e);
 		}
 
 	}
