@@ -13,7 +13,8 @@ public class PersonaAR {
 	static final String URL = "jdbc:mysql://localhost/curso";
 	static final String USUARIO = "root";
 	static final String CLAVE = "";
-	static final String CONSULTA = "SELECT * FROM Personas";
+	static final String INSER = "SELECT * FROM Personas";
+	static final String INSERCION = "Insert into Personas values(?,?,?,?,?)";
 
 	private String dni;
 	private String nombre;
@@ -79,13 +80,12 @@ public class PersonaAR {
 		List<PersonaAR> listaPersonas = new ArrayList<PersonaAR>();
 
 		try (Connection conn = DriverManager.getConnection(URL, USUARIO, CLAVE);
-				PreparedStatement sentencia = conn.prepareStatement(CONSULTA);
+				PreparedStatement sentencia = conn.prepareStatement(INSER);
 
 		) {
 
 			try (ResultSet rs = sentencia.executeQuery();) {
 
-			
 				while (rs.next()) {
 					PersonaAR persona = new PersonaAR();
 					persona.setDni(rs.getString("dni"));
@@ -106,6 +106,27 @@ public class PersonaAR {
 		}
 
 		return listaPersonas;
+
+	}
+
+	public void insertar() {
+
+		try (Connection conn = DriverManager.getConnection(URL, USUARIO, CLAVE);
+				PreparedStatement sentencia = conn.prepareStatement(INSERCION);
+
+		) {
+
+			sentencia.setString(1, getDni());
+			sentencia.setString(2, getNombre());
+			sentencia.setString(3, getApellidos());
+			sentencia.setInt(4, getEdad());
+			sentencia.setString(5, getPais());
+			sentencia.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
