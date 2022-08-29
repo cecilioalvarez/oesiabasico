@@ -1,4 +1,4 @@
-package com.arquitecturajava.jdbc;
+package com.arquitecturajava.jdbc2;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,7 +15,6 @@ import java.util.Properties;
 
 public class PersonaAR {
 
-	
 	static final String INSER = "SELECT * FROM Personas";
 	static final String INSERCION = "Insert into Personas values(?,?,?,?,?)";
 	static final String BORRAR = "DELETE from Personas where dni=?";
@@ -88,16 +87,10 @@ public class PersonaAR {
 
 	public static List<PersonaAR> buscarTodos() {
 
-		Properties propiedades= new Properties();
-		try {
-			propiedades.load(new FileInputStream(new File("db.properties")));
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		Configurador c= Configurador.getInstance();
 		List<PersonaAR> listaPersonas = new ArrayList<PersonaAR>();
 
-		try (Connection conn = DriverManager.getConnection(propiedades.getProperty("url"), propiedades.getProperty("user"), propiedades.getProperty("passord"));
+		try (Connection conn = DriverManager.getConnection(c.getUrl(),c.getUser(),c.getPassword());
 				PreparedStatement sentencia = conn.prepareStatement(INSER);
 
 		) {
@@ -129,15 +122,9 @@ public class PersonaAR {
 
 	public void insertar() {
 
-		Properties propiedades= new Properties();
-		try {
-			propiedades.load(new FileInputStream(new File("db.properties")));
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		Configurador c= Configurador.getInstance();
 		
-		try (Connection conn = DriverManager.getConnection(propiedades.getProperty("url"), propiedades.getProperty("user"), propiedades.getProperty("password"));
+		try (Connection conn = DriverManager.getConnection(c.getUrl(),c.getUser(),c.getPassword());
 				PreparedStatement sentencia = conn.prepareStatement(INSERCION);
 
 		) {
@@ -158,17 +145,9 @@ public class PersonaAR {
 	
 	public void borrar() {
 
-		Properties propiedades= new Properties();
 		
-		try {
-			propiedades.load(new FileInputStream(new File("db.properties")));
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		
-		try (Connection conn = DriverManager.getConnection(propiedades.getProperty("url"), propiedades.getProperty("user"), propiedades.getProperty("password"));
+		Configurador c= Configurador.getInstance();
+		try (Connection conn = DriverManager.getConnection(c.getUrl(),c.getUser(),c.getPassword());
 				PreparedStatement sentencia = conn.prepareStatement(BORRAR);
 
 		) {
