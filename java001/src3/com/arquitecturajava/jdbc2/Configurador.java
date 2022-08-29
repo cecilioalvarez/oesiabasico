@@ -46,6 +46,7 @@ public class Configurador {
 	
 	public static Configurador getInstance() {
 		
+		//la construccion de un objeto en memoria
 		if (configurador==null) {
 			
 			configurador= new Configurador();
