@@ -32,7 +32,7 @@ public class Principal4 {
 				while (rs.next()) {
 
 					System.out.println(rs.getString("nombre"));
-					System.err.println(rs.getString("apellidos"));
+					System.out.println(rs.getString("apellidos"));
 				}
 			} catch (SQLException e) {
 
