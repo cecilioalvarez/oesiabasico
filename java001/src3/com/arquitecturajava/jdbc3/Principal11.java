@@ -2,11 +2,11 @@ package com.arquitecturajava.jdbc3;
 
 import java.util.List;
 
-public class Principal10 {
+public class Principal11 {
 
 	public static void main(String[] args) {
 
-		PersonaAR p= PersonaAR.buscarUna("2");
+		PersonaAR p= new PersonaAR("2");
 		
 		List<CompraAR> compras=p.getCompras();
 		
