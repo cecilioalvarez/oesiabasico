@@ -16,8 +16,10 @@ public class Principal8 {
 			System.out.println(c.getImporte());
 		}
 		
-		CompraAR nueva = new CompraAR("tabletB",200,"1");
-		nueva.insertar();
+//		CompraAR nueva = new CompraAR("tabletB",200,"1");
+//		nueva.insertar();
+		CompraAR otra = new CompraAR(1);
+		otra.borrar();
 
 }
 }

@@ -69,6 +69,8 @@ public class CompraAR {
 		super();
 	}
 
+	
+
 	public CompraAR(String concepto, double importe,String dni) {
 		super();
 	
