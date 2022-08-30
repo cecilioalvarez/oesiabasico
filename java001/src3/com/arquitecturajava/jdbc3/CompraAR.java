@@ -130,6 +130,8 @@ public class CompraAR {
 		List<CompraAR> listaPersonas = new ArrayList<CompraAR>();
 
 		String SQL_Final= String.format(SELECCIONAR_ORDENADOS,campo);
+		
+		
 		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(SQL_Final);
 				Connection conn = sentencia.getConnection();) {
 

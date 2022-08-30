@@ -18,6 +18,7 @@ import javax.management.RuntimeErrorException;
 public class PersonaAR {
 
 	static final String SELECCIONAR = "SELECT * FROM Personas";
+	static final String SELECCIONAR_COMPRAS = "SELECT * FROM Compras where personas_dni=?";
 	static final String INSERCION = "Insert into Personas values(?,?,?,?,?)";
 	static final String BORRAR = "DELETE from Personas where dni=?";
 
@@ -112,6 +113,36 @@ public class PersonaAR {
 		}
 
 		return listaPersonas;
+
+	}
+
+	public List<CompraAR> getCompras() {
+
+		List<CompraAR> listaCompras = new ArrayList<CompraAR>();
+
+		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(SELECCIONAR_COMPRAS, getDni());
+				Connection conn = sentencia.getConnection();) {
+
+			try (ResultSet rs = sentencia.executeQuery();) {
+
+				while (rs.next()) {
+					CompraAR compra = new CompraAR();
+					compra.setId(rs.getInt("id"));
+					compra.setConcepto(rs.getString("concepto"));
+					compra.setImporte(rs.getDouble("importe"));
+					compra.setDni(rs.getString("personas_dni"));
+					listaCompras.add(compra);
+				}
+
+			} catch (SQLException e) {
+				throw new RuntimeException("error de datos", e);
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException("error de datos", e);
+		}
+
+		return listaCompras;
 
 	}
 
