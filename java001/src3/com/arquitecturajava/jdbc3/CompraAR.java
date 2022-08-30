@@ -1,23 +1,17 @@
 package com.arquitecturajava.jdbc3;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
-
-import javax.management.RuntimeErrorException;
 
 public class CompraAR {
 	
 	static final String SELECCIONAR = "SELECT * FROM Compras";
+	static final String SELECCIONAR_ORDENADOS = "SELECT * FROM Compras order by %s";
+
 	static final String INSERCION = "Insert into Compras (concepto,importe,personas_dni) values(?,?,?)";
 	static final String BORRAR = "DELETE from Compras where id=?";
 
@@ -129,5 +123,38 @@ public class CompraAR {
 		}
 
 	}
+	
+	
+	public static List<CompraAR> buscarTodosOrdenados(String campo) {
+
+		List<CompraAR> listaPersonas = new ArrayList<CompraAR>();
+
+		String SQL_Final= String.format(SELECCIONAR_ORDENADOS,campo);
+		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(SQL_Final);
+				Connection conn = sentencia.getConnection();) {
+
+			try (ResultSet rs = sentencia.executeQuery();) {
+
+				while (rs.next()) {
+					CompraAR compra = new CompraAR();
+					compra.setId(rs.getInt("id"));
+					compra.setConcepto(rs.getString("concepto"));
+					compra.setImporte(rs.getDouble("importe"));
+					compra.setDni(rs.getString("personas_dni"));
+					listaPersonas.add(compra);
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("error de datos", e);
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException("error de datos", e);
+		}
+
+		return listaPersonas;
+
+	}
+	
+	
 
 }
