@@ -15,6 +15,9 @@ public class Principal8 {
 			System.out.println(c.getConcepto());
 			System.out.println(c.getImporte());
 		}
+		
+		CompraAR nueva = new CompraAR("tabletB",200,"1");
+		nueva.insertar();
 
 }
 }

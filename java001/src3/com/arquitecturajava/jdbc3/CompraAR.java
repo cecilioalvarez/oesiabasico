@@ -18,7 +18,7 @@ import javax.management.RuntimeErrorException;
 public class CompraAR {
 	
 	static final String SELECCIONAR = "SELECT * FROM Compras";
-	static final String INSERCION = "Insert into Compras values(?,?,?)";
+	static final String INSERCION = "Insert into Compras (concepto,importe,personas_dni) values(?,?,?)";
 	static final String BORRAR = "DELETE from Compras where id=?";
 
 	private int id;
@@ -69,12 +69,12 @@ public class CompraAR {
 		super();
 	}
 
-	public CompraAR(int id, String concepto, double importe) {
+	public CompraAR(String concepto, double importe,String dni) {
 		super();
-		this.id = id;
+	
 		this.concepto = concepto;
 		this.importe = importe;
-		
+		this.dni= dni;
 	}
 
 	public static List<CompraAR> buscarTodos() {
