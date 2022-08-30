@@ -8,13 +8,13 @@ public class Principal11 {
 
 		PersonaAR p= new PersonaAR("2");
 		
-		List<CompraAR> compras=p.getCompras();
-		
-		for (CompraAR c: compras) {
-			
-			System.out.println(c.getImporte());
-			System.out.println(c.getConcepto());
-			
-		}
+//		List<CompraAR> compras=p.getCompras();
+//		
+//		for (CompraAR c: compras) {
+//			
+//			System.out.println(c.getImporte());
+//			System.out.println(c.getConcepto());
+//			
+//		}
 	}
 }
