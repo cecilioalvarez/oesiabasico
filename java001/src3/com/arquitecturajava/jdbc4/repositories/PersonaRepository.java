@@ -1,20 +1,11 @@
 package com.arquitecturajava.jdbc4.repositories;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Properties;
-
-import javax.management.RuntimeErrorException;
 
 import com.arquitecturajava.jdbc4.models.Persona;
 import com.arquitecturajava.jdbc4.repositories.db.DataBaseHelper;
@@ -30,7 +21,7 @@ public class PersonaRepository {
 	static final String BORRAR = "DELETE from Personas where dni=?";
 
 	
-	public static List<Persona> buscarTodos() {
+	public  List<Persona> buscarTodos() {
 
 		List<Persona> listaPersonas = new ArrayList<Persona>();
 
@@ -105,7 +96,7 @@ public class PersonaRepository {
 //
 //	}
 
-	public static Persona buscarUna(String dni) {
+	public  Persona buscarUna(String dni) {
 
 		Persona persona = new Persona();
 
