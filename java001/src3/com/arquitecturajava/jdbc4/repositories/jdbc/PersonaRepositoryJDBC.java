@@ -9,9 +9,10 @@ import java.util.List;
 
 import com.arquitecturajava.jdbc4.models.Compra;
 import com.arquitecturajava.jdbc4.models.Persona;
+import com.arquitecturajava.jdbc4.repositories.PersonaRepository;
 import com.arquitecturajava.jdbc4.repositories.jdbc.db.DataBaseHelper;
 
-public class PersonaRepositoryJDBC {
+public class PersonaRepositoryJDBC implements PersonaRepository {
 
 	static final String SELECCIONAR = "SELECT * FROM Personas";
 	static final String SELECCIONAR_UNA = "SELECT * FROM Personas where dni=?";
@@ -22,6 +23,7 @@ public class PersonaRepositoryJDBC {
 	static final String BORRAR = "DELETE from Personas where dni=?";
 
 	
+	@Override
 	public  List<Persona> buscarTodos() {
 
 		List<Persona> listaPersonas = new ArrayList<Persona>();
@@ -52,6 +54,7 @@ public class PersonaRepositoryJDBC {
 
 	}
 
+	@Override
 	public  List<Persona> buscarTodosConCompras() {
 
 		List<Persona> listaPersonas = new ArrayList<Persona>();
@@ -97,6 +100,7 @@ public class PersonaRepositoryJDBC {
 
 	}
 
+	@Override
 	public  Persona buscarUna(String dni) {
 
 		Persona persona = new Persona();
@@ -156,6 +160,7 @@ public class PersonaRepositoryJDBC {
 //
 //	}
 
+	@Override
 	public void insertar(Persona p) {
 
 		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(INSERCION, p.getDni(), p.getNombre(),
@@ -167,6 +172,7 @@ public class PersonaRepositoryJDBC {
 
 	}
 
+	@Override
 	public void borrar(Persona p) {
 
 		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(BORRAR, p.getDni());

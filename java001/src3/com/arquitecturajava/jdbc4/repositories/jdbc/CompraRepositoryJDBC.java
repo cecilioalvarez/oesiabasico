@@ -8,9 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.arquitecturajava.jdbc4.models.Compra;
+import com.arquitecturajava.jdbc4.repositories.CompraRepository;
 import com.arquitecturajava.jdbc4.repositories.jdbc.db.DataBaseHelper;
 
-public class CompraRepositoryJDBC {
+public class CompraRepositoryJDBC implements CompraRepository {
 	
 	static final String SELECCIONAR = "SELECT * FROM Compras";
 	static final String SELECCIONAR_ORDENADOS = "SELECT * FROM Compras order by %s";
@@ -49,6 +50,7 @@ public class CompraRepositoryJDBC {
 
 	}
 
+	@Override
 	public void insertar(Compra compra) {
 
 		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(INSERCION, compra.getConcepto(), compra.getImporte(),compra.getDni());
@@ -60,6 +62,7 @@ public class CompraRepositoryJDBC {
 
 	}
 
+	@Override
 	public void borrar(Compra compra) {
 
 		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(BORRAR, compra.getId());
