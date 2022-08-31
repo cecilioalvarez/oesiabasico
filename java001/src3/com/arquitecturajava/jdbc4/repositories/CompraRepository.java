@@ -1,4 +1,4 @@
-package com.arquitecturajava.jdbc4;
+package com.arquitecturajava.jdbc4.repositories;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompraAR {
+import com.arquitecturajava.jdbc4.models.Compra;
+import com.arquitecturajava.jdbc4.repositories.db.DataBaseHelper;
+
+public class CompraRepository {
 	
 	static final String SELECCIONAR = "SELECT * FROM Compras";
 	static final String SELECCIONAR_ORDENADOS = "SELECT * FROM Compras order by %s";
@@ -15,67 +18,11 @@ public class CompraAR {
 	static final String INSERCION = "Insert into Compras (concepto,importe,personas_dni) values(?,?,?)";
 	static final String BORRAR = "DELETE from Compras where id=?";
 
-	private int id;
-	private String concepto;
-	private double importe;
-	private String dni;
-	
 
-	public String getDni() {
-		return dni;
-	}
 
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
+	public static List<Compra> buscarTodos() {
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getConcepto() {
-		return concepto;
-	}
-
-	public void setConcepto(String concepto) {
-		this.concepto = concepto;
-	}
-
-	public double getImporte() {
-		return importe;
-	}
-
-	public void setImporte(double importe) {
-		this.importe = importe;
-	}
-
-	
-	public CompraAR(int id) {
-		super();
-		this.id = id;
-	}
-
-	public CompraAR() {
-		super();
-	}
-
-	
-
-	public CompraAR(String concepto, double importe,String dni) {
-		super();
-	
-		this.concepto = concepto;
-		this.importe = importe;
-		this.dni= dni;
-	}
-
-	public static List<CompraAR> buscarTodos() {
-
-		List<CompraAR> listaPersonas = new ArrayList<CompraAR>();
+		List<Compra> listaPersonas = new ArrayList<Compra>();
 
 		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(SELECCIONAR, null);
 				Connection conn = sentencia.getConnection();) {
@@ -83,7 +30,7 @@ public class CompraAR {
 			try (ResultSet rs = sentencia.executeQuery();) {
 
 				while (rs.next()) {
-					CompraAR compra = new CompraAR();
+					Compra compra = new Compra();
 					compra.setId(rs.getInt("id"));
 					compra.setConcepto(rs.getString("concepto"));
 					compra.setImporte(rs.getDouble("importe"));
@@ -102,9 +49,9 @@ public class CompraAR {
 
 	}
 
-	public void insertar() {
+	public void insertar(Compra compra) {
 
-		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(INSERCION, getConcepto(), getImporte(),getDni());
+		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(INSERCION, compra.getConcepto(), compra.getImporte(),compra.getDni());
 				Connection conn = sentencia.getConnection();) {
 			sentencia.executeUpdate();
 		} catch (SQLException e) {
@@ -113,9 +60,9 @@ public class CompraAR {
 
 	}
 
-	public void borrar() {
+	public void borrar(Compra compra) {
 
-		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(BORRAR, getId());
+		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(BORRAR, compra.getId());
 				Connection conn = sentencia.getConnection();) {
 			sentencia.executeUpdate();
 		} catch (SQLException e) {
@@ -125,9 +72,9 @@ public class CompraAR {
 	}
 	
 	
-	public static List<CompraAR> buscarTodosOrdenados(String campo) {
+	public static List<Compra> buscarTodosOrdenados(String campo) {
 
-		List<CompraAR> listaPersonas = new ArrayList<CompraAR>();
+		List<Compra> listaCompras = new ArrayList<Compra>();
 
 		String SQL_Final= String.format(SELECCIONAR_ORDENADOS,campo);
 		
@@ -138,12 +85,12 @@ public class CompraAR {
 			try (ResultSet rs = sentencia.executeQuery();) {
 
 				while (rs.next()) {
-					CompraAR compra = new CompraAR();
+					Compra compra = new Compra();
 					compra.setId(rs.getInt("id"));
 					compra.setConcepto(rs.getString("concepto"));
 					compra.setImporte(rs.getDouble("importe"));
 					compra.setDni(rs.getString("personas_dni"));
-					listaPersonas.add(compra);
+					listaCompras.add(compra);
 				}
 			} catch (SQLException e) {
 				throw new RuntimeException("error de datos", e);
@@ -153,7 +100,7 @@ public class CompraAR {
 			throw new RuntimeException("error de datos", e);
 		}
 
-		return listaPersonas;
+		return listaCompras;
 
 	}
 	
