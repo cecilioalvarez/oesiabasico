@@ -1,4 +1,4 @@
-package com.arquitecturajava.jdbc4.repositories;
+package com.arquitecturajava.miproyecto.repositories;
 
 import com.arquitecturajava.jdbc4.models.Compra;
 

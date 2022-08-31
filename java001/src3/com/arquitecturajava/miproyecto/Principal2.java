@@ -1,11 +1,11 @@
-package com.arquitecturajava.jdbc4;
+package com.arquitecturajava.miproyecto;
 
 import java.util.List;
 
 import com.arquitecturajava.jdbc4.models.Compra;
 import com.arquitecturajava.jdbc4.models.Persona;
-import com.arquitecturajava.jdbc4.repositories.PersonaRepository;
-import com.arquitecturajava.jdbc4.repositories.jdbc.PersonaRepositoryJDBC;
+import com.arquitecturajava.miproyecto.repositories.PersonaRepository;
+import com.arquitecturajava.miproyecto.repositories.jdbc.PersonaRepositoryJDBC;
 
 public class Principal2 {
 

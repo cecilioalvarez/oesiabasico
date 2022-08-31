@@ -1,4 +1,4 @@
-package com.arquitecturajava.jdbc4.repositories.jdbc;
+package com.arquitecturajava.miproyecto.repositories.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.arquitecturajava.jdbc4.models.Compra;
-import com.arquitecturajava.jdbc4.repositories.CompraRepository;
-import com.arquitecturajava.jdbc4.repositories.jdbc.db.DataBaseHelper;
+import com.arquitecturajava.miproyecto.repositories.CompraRepository;
+import com.arquitecturajava.miproyecto.repositories.jdbc.config.DataBaseHelper;
 
 public class CompraRepositoryJDBC implements CompraRepository {
 	

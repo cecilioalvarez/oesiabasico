@@ -1,4 +1,4 @@
-package com.arquitecturajava.jdbc4.repositories.jdbc;
+package com.arquitecturajava.miproyecto.repositories.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,8 +9,8 @@ import java.util.List;
 
 import com.arquitecturajava.jdbc4.models.Compra;
 import com.arquitecturajava.jdbc4.models.Persona;
-import com.arquitecturajava.jdbc4.repositories.PersonaRepository;
-import com.arquitecturajava.jdbc4.repositories.jdbc.db.DataBaseHelper;
+import com.arquitecturajava.miproyecto.repositories.PersonaRepository;
+import com.arquitecturajava.miproyecto.repositories.jdbc.config.DataBaseHelper;
 
 public class PersonaRepositoryJDBC implements PersonaRepository {
 
