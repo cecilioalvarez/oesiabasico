@@ -1,4 +1,4 @@
-package com.arquitecturajava.jdbc4.repositories.db;
+package com.arquitecturajava.jdbc4.repositories.jdbc.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

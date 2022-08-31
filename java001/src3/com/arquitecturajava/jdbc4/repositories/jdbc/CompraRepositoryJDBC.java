@@ -1,4 +1,4 @@
-package com.arquitecturajava.jdbc4.repositories;
+package com.arquitecturajava.jdbc4.repositories.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.arquitecturajava.jdbc4.models.Compra;
-import com.arquitecturajava.jdbc4.repositories.db.DataBaseHelper;
+import com.arquitecturajava.jdbc4.repositories.jdbc.db.DataBaseHelper;
 
-public class CompraRepository {
+public class CompraRepositoryJDBC {
 	
 	static final String SELECCIONAR = "SELECT * FROM Compras";
 	static final String SELECCIONAR_ORDENADOS = "SELECT * FROM Compras order by %s";
