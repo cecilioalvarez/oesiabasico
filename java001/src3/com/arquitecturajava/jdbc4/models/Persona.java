@@ -1,5 +1,7 @@
 package com.arquitecturajava.jdbc4.models;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Persona {
@@ -10,11 +12,20 @@ public class Persona {
 	private String apellidos;
 	private int edad;
 	private String pais;
-//	private List<CompraAR> compras = new ArrayList<CompraAR>();
-//
-//	public void setCompras(List<CompraAR> compras) {
-//		this.compras = compras;
-//	}
+	private List<Compra> compras = new ArrayList<Compra>();
+
+	public void setCompras(List<Compra> compras) {
+		this.compras = compras;
+	}
+	
+	public List<Compra> getCompras() {
+		return compras;
+	}
+
+	public void addCompra(Compra c) {
+		
+		compras.add(c);
+	}
 
 	public String getDni() {
 		return dni;
