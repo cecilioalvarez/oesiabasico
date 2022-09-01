@@ -14,6 +14,7 @@ import com.arquitecturajava.miproyecto.repositories.jdbc.config.DataBaseHelper;
 
 public class PersonaRepositoryJDBC implements PersonaRepository {
 
+	static final String SELECCIONAR_MEDIA = "SELECT AVG(edad) as media FROM Personas";
 	static final String SELECCIONAR = "SELECT * FROM Personas";
 	static final String SELECCIONAR_UNA = "SELECT * FROM Personas where dni=?";
 	static final String SELECCIONAR_COMPRAS = "SELECT * FROM Compras where personas_dni=?";
@@ -182,6 +183,42 @@ public class PersonaRepositoryJDBC implements PersonaRepository {
 			throw new RuntimeException("error de datos", e);
 		}
 
+	}
+
+	@Override
+	public double calcularEdadMedia() {
+		double media=0;
+		
+		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(SELECCIONAR_MEDIA, null);
+				Connection conn = sentencia.getConnection();) {
+
+			try (ResultSet rs = sentencia.executeQuery();) {
+
+				rs.next();
+				media= rs.getDouble("media");
+				
+			} catch (SQLException e) {
+				throw new RuntimeException("error de datos", e);
+			}
+
+		} catch (SQLException e1) {
+			throw new RuntimeException("error de datos", e1);
+		}
+
+		
+		return media;
+	}
+
+	@Override
+	public double calculaEdadMayor() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double calculaEdadMenor() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	

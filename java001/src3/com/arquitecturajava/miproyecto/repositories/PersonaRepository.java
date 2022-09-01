@@ -7,7 +7,11 @@ import com.arquitecturajava.jdbc4.models.Persona;
 public interface PersonaRepository {
 
 	List<Persona> buscarTodos();
-
+	
+	double calcularEdadMedia();
+	double calculaEdadMayor();
+	double calculaEdadMenor();
+	
 	List<Persona> buscarTodosConCompras();
 
 	Persona buscarUna(String dni);
