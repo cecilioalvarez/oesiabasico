@@ -18,8 +18,8 @@ public class ExpresionesRegulares4 {
 				int contador=0;
 				System.out.println(linea);
 				Matcher encontrar = patron.matcher(linea);
-				Stream<MatchResult> resultados=encontrar.results();
-				resultados.skip(1).forEach((e)->System.out.println(e.group()));
+				MatchResult[] lista=encontrar.results().toArray(MatchResult[]::new);
+				System.out.println(lista[1].group());
 				
 				
 			System.out.println(contador);
