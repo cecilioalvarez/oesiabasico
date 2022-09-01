@@ -197,9 +197,7 @@ public class PersonaRepositoryJDBC implements PersonaRepository {
 				rs.next();
 				media= rs.getDouble("media");
 				
-			} catch (SQLException e) {
-				throw new RuntimeException("error de datos", e);
-			}
+			} 
 
 		} catch (SQLException e1) {
 			throw new RuntimeException("error de datos", e1);
