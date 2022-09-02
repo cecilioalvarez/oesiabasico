@@ -3,9 +3,18 @@ package com.arquitecturajava;
 public class Persona implements Comparable<Persona> {
 
 	private String nombre;
-
+	private String apellidos;
 	private int edad;
 	
+	
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+
 	public int getEdad() {
 		return edad;
 	}
@@ -30,6 +39,13 @@ public class Persona implements Comparable<Persona> {
 	public Persona(String nombre, int edad) {
 		super();
 		this.nombre = nombre;
+		this.edad = edad;
+	}
+
+	public Persona(String nombre, String apellidos, int edad) {
+		super();
+		this.nombre = nombre;
+		this.apellidos = apellidos;
 		this.edad = edad;
 	}
 

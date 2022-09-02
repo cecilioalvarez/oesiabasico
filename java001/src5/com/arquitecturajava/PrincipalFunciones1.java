@@ -10,13 +10,13 @@ public class PrincipalFunciones1 {
 	public static void main(String[] args) {
 
 		List<Persona> bolsaPersonas = new ArrayList<Persona>();
-		bolsaPersonas.add(new Persona("miguel", 20));
-		bolsaPersonas.add(new Persona("antonio", 30));
-		bolsaPersonas.add(new Persona("ana", 10));
-		bolsaPersonas.add(new Persona("jose", 15));
+		bolsaPersonas.add(new Persona("miguel","alvarez", 20));
+		bolsaPersonas.add(new Persona("antonio","gomez", 30));
+		bolsaPersonas.add(new Persona("ana","blanco", 10));
+		bolsaPersonas.add(new Persona("jose","fernandez", 15));
 
-		bolsaPersonas.add(new Persona("david", 50));
-		bolsaPersonas.add(new Persona("gema", 20));
+		bolsaPersonas.add(new Persona("david","corso", 50));
+		bolsaPersonas.add(new Persona("gema", "diaz",20));
 
 		Collections.sort(bolsaPersonas, new EdadComparator());
 		for (Persona p : bolsaPersonas) {
@@ -27,7 +27,10 @@ public class PrincipalFunciones1 {
 
 		Comparator<Persona> comparador= (o1,o2)->o1.getNombre().compareTo(o2.getNombre());
 		ordenarLista(bolsaPersonas,comparador);
-		
+
+		Comparator<Persona> comparador2= (o1,o2)->o1.getApellidos().compareTo(o2.getApellidos());
+		ordenarLista(bolsaPersonas,comparador2);
+
 		
 	}
 	public static void ordenarLista(List<Persona> lista, Comparator<Persona> comparador) {
