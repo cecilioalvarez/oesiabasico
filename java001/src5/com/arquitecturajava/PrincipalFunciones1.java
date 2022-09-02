@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Principal2 {
+public class PrincipalFunciones1 {
 
 	public static void main(String[] args) {
-
+		
 		
 		
 		List<Persona> bolsaPersonas= new ArrayList<Persona>();
@@ -24,7 +24,14 @@ public class Principal2 {
 
 			System.out.println(p.getNombre());
 		}
+		System.out.println("***********");
+		Collections.sort(bolsaPersonas, new EdadComparator());
 		
-		
+		Collections.sort(bolsaPersonas, new NombreComparator());
+		for (Persona p : bolsaPersonas) {
+
+			System.out.println(p.getNombre());
+		}
 	}
+
 }
