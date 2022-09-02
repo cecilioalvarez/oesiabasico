@@ -20,6 +20,7 @@ public class Bolsa<T> implements Iterable<T>{
 	public void add(T elemento) {
 		if (elementos.size()<tope)
 		elementos.add(elemento);
+	
 	}
 	@Override
 	public Iterator<T> iterator() {

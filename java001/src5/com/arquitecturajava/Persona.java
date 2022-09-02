@@ -1,6 +1,6 @@
 package com.arquitecturajava;
 
-public class Persona {
+public class Persona implements Comparable<Persona> {
 
 	private String nombre;
 
@@ -15,6 +15,12 @@ public class Persona {
 	public Persona(String nombre) {
 		super();
 		this.nombre = nombre;
+	}
+
+	@Override
+	public int compareTo(Persona o) {
+		
+		return this.getNombre().compareTo(o.getNombre());
 	}
 
 
