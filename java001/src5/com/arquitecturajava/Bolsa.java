@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Bolsa implements Iterable<String>{
+public class Bolsa<T> implements Iterable<T>{
 
-	private List<String> elementos= new ArrayList<String>();
+	private List<T> elementos= new ArrayList<T>();
 	private int tope;
 	
 
@@ -14,15 +14,15 @@ public class Bolsa implements Iterable<String>{
 		super();
 		this.tope = tope;
 	}
-	public void remove(String elemento) {
+	public void remove(T elemento) {
 		elementos.remove(elemento);
 	}
-	public void add(String elemento) {
+	public void add(T elemento) {
 		if (elementos.size()<tope)
 		elementos.add(elemento);
 	}
 	@Override
-	public Iterator iterator() {
+	public Iterator<T> iterator() {
 		// TODO Auto-generated method stub
 		return elementos.iterator();
 	}
