@@ -1,12 +1,28 @@
 package com.arquitecturajava.lambdas5;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Persona implements Comparable<Persona> {
 
 	private String nombre;
 	private String apellidos;
 	private int edad;
+	List<Libro> libros= new ArrayList<Libro>();
 	
+	public void addLibro (Libro libro) {
+		
+		libros.add(libro);
+	}
 	
+	public List<Libro> getLibros() {
+		return libros;
+	}
+
+	public void setLibros(List<Libro> libros) {
+		this.libros = libros;
+	}
+
 	public String getApellidos() {
 		return apellidos;
 	}
