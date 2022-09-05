@@ -2,6 +2,7 @@ package com.arquitecturajava.lambdas5;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public class Principal {
@@ -19,6 +20,9 @@ public class Principal {
 		p3.addLibro(new Libro ("php",20));
 		p4.addLibro(new Libro ("c",20));
 		
+		Predicate<Persona> pp= (Persona personita)-> personita.getEdad()>20;
+		System.out.println(pp.test(p));
+		
 		lista.add(p);
 		lista.add(p2);
 		lista.add(p3);
@@ -31,12 +35,11 @@ public class Principal {
 		
 		Stream<Persona> flujo= lista.stream();
 		
-		flujo.
-		map((persona)->persona.getLibros()).forEach((listado)-> {
-			
-			listado.forEach((l)->System.out.println(l.getPrecio()));
-			
-		});
+		flujo
+		.map(Persona::getLibros)
+		.flatMap((libros)->libros.stream())
+		.map(Libro::getPrecio)
+		.forEach(System.out::println);
 		
 		
 		
