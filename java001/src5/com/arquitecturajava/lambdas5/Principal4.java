@@ -2,12 +2,10 @@ package com.arquitecturajava.lambdas5;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.OptionalDouble;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
-public class Principal2 {
+public class Principal4 {
 
 	public static void main(String[] args) {
 		
@@ -23,14 +21,10 @@ public class Principal2 {
 		
 		
 		
-		OptionalDouble oResultado=flujo.filter(Predicate.not(Factura::isPagada))
-		.mapToDouble(Factura::getIva).reduce((a,i)->a+i);
-			
+		flujo.filter(Predicate.not(Factura::isPagada))
+		.map(Factura::getIva)
+		.forEach(System.out::println);
 		
-		 if (oResultado.isPresent()) {
-			 
-			 System.out.println(oResultado.getAsDouble());
-		 }
 		
 		
 
