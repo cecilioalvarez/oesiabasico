@@ -1,4 +1,4 @@
-package com.arquitecturajava;
+package com.arquitecturajava.lambdas1;
 
 import java.util.ArrayList;
 import java.util.Collections;

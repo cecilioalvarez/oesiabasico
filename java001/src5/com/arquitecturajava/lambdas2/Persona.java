@@ -1,4 +1,4 @@
-package com.arquitecturajava;
+package com.arquitecturajava.lambdas2;
 
 public class Persona implements Comparable<Persona> {
 
