@@ -1,7 +1,9 @@
 package com.arquitecturajava.lambdas2;
 
+@FunctionalInterface
 public interface FiltroPersonas {
 
 	
-	public boolean filtrar(Persona persona) ;
+	 boolean filtrar(Persona persona) ;
+	
 }

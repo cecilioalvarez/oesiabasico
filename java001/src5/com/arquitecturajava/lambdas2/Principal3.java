@@ -3,7 +3,7 @@ package com.arquitecturajava.lambdas2;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Principal {
+public class Principal3 {
 
 	public static void main(String[] args) {
 
@@ -16,13 +16,14 @@ public class Principal {
 		lista.add(new Persona("anabel", "rojo", 10));
 		lista.add(new Persona("ana", "bolado", 60));
 
-		impirmirFiltrada(lista, new FiltroPersonasNombre("ana"));
-		System.out.println("*******************");
-		impirmirFiltrada(lista, new FiltroPersonasApellidos("rojo"));
+		impirmirFiltrada(lista, new FiltroPersonasNombre2("ana"));
+		System.out.println("***************");
+		impirmirFiltrada(lista, (p)->p.getNombre().equals("andres"));
+		
 
 	}
 
-	public static void impirmirFiltrada(List<Persona> lista, FiltroPersonas filtro) {
+	public static void impirmirFiltrada(List<Persona> lista, Filtro<Persona> filtro) {
 
 		for (Persona p : lista) {
 
