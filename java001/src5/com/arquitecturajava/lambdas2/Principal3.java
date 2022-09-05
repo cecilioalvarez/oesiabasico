@@ -2,6 +2,7 @@ package com.arquitecturajava.lambdas2;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Principal3 {
 
@@ -16,18 +17,18 @@ public class Principal3 {
 		lista.add(new Persona("anabel", "rojo", 10));
 		lista.add(new Persona("ana", "bolado", 60));
 
-		impirmirFiltrada(lista, new FiltroPersonasNombre2("ana"));
+		impirmirFiltrada(lista, new FiltroPersonasNombre3("ana"));
 		System.out.println("***************");
 		impirmirFiltrada(lista, (p)->p.getNombre().equals("andres"));
 		
 
 	}
 
-	public static void impirmirFiltrada(List<Persona> lista, Filtro<Persona> filtro) {
+	public static void impirmirFiltrada(List<Persona> lista, Predicate<Persona> filtro) {
 
 		for (Persona p : lista) {
 
-			if (filtro.filtrar(p)) {
+			if (filtro.test(p)) {
 
 				System.out.println(p.getNombre());
 				System.out.println(p.getApellidos());
