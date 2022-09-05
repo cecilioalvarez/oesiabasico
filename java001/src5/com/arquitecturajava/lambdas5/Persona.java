@@ -56,5 +56,9 @@ public class Persona implements Comparable<Persona> {
 	}
 
 
+	public boolean estaJubilado() {
+		
+		return edad>65;
+	}
 	
 }

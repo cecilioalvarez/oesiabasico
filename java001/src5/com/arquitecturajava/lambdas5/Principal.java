@@ -21,12 +21,10 @@ public class Principal {
  		
 		Stream<Persona> flujo= lista.stream();
 		
-		Predicate<Persona> filtroEdad=(p)->p.getEdad()>20;
-		
 		
 		
 		flujo
-		.filter(filtroEdad)
+		.filter(Persona::estaJubilado)
 		
 		.peek((p)->System.out.println(p.getNombre()))
 		
@@ -39,6 +37,7 @@ public class Principal {
 		.forEach((nombre)-> {
 			
 				System.out.println("*****"+nombre+"******");
+			
 		});
 		
 		
